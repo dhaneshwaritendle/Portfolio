@@ -1,0 +1,51 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id           Int      @id @default(autoincrement())
+  title        String   @unique
+  description  String
+  longDesc     String?
+  techStack    String[]
+  githubUrl    String?
+  liveUrl      String?
+  imageUrl     String?
+  isFeatured   Boolean  @default(false)
+  isActive     Boolean  @default(true)
+  displayOrder Int      @default(0)
+  status       String   @default("COMPLETED")
+  createdAt    DateTime @default(now())
+}
+
+model Skill {
+  id       Int    @id @default(autoincrement())
+  name     String
+  category String
+  level    Int    @default(3)
+}
+
+
+model Admin {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String // bcrypt hashed
+}
+
+model Experience {
+  id          Int      @id @default(autoincrement())
+  title       String   // "Software Developer"
+  company     String   // "Google"
+  startDate   String   // "Jan 2023"
+  endDate     String?  // null = "Present"
+  description String?
+  isActive    Boolean  @default(true)
+  displayOrder Int     @default(0)
+}
