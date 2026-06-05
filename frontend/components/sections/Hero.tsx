@@ -32,7 +32,7 @@ export default function Hero() {
             Get In Touch
           </Button>
           <a
-            href="/resume.pdf"
+            href="frontend/public/DhaneshwariTendle_2026.pdf"
             download
             className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-gray-600 text-gray-300 hover:border-white hover:text-white transition-all duration-200 text-base font-medium"
           >
