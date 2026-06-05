@@ -1,0 +1,1 @@
+// SVG contour background helper
