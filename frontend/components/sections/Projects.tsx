@@ -38,14 +38,15 @@ const projects = [
 export default function Projects() {
 
   return (
-    <section id="projects" className="px-6 md:px-12 py-24  mx-auto  bg-gray-800">
+    <section id="projects" className="6xl px-12 md:px-18 py-24  mx-auto bg-gray-950 items-center-safe">
 
       <div className="max-w-6xl mx-auto px-6 text-center mb-16">
         <SectionLabel text="What I've built" />
         <h2 className="text-4xl font-bold text-white">Projects.</h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-5 "> */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 ">
         {projects.map((p, i) => (
           <ProjectCard key={i} project={p} />
         ))}

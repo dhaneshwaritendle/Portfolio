@@ -37,7 +37,7 @@ const socials: SocialLink[] = [
   {
     label: 'LinkedIn',
     href: 'https://www.linkedin.com/in/dhaneshwari-tendle-868b0324a/',
-    description: 'www.linkedin.com/in/dhaneshwari-tendle/',
+    description: 'www.linkedin.com/in/dhaneshwari-tendle-868b0324a/',
     color: 'hover:border-sky hover:bg-sky/20',
     icon: (
       <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
@@ -46,11 +46,15 @@ const socials: SocialLink[] = [
     ),
   },
   // {
-  //   label: '',
-  //   href: '',
-  //   description: '',
-  //   color: '',
-  //   icon: ''
+  //   label: 'LeetCode',
+  //   href: 'https://leetcode.com/yourusername',
+  //   description: 'leetcode.com/yourusername',
+  //   color: 'hover:border-peach hover:bg-peach/30',
+  //   icon: (
+  //     <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
+  //       <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H19.8a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" />
+  //     </svg>
+  //   ),
   // },
 ]
 
@@ -70,7 +74,7 @@ export default function Contact() {
     btn.disabled = true
 
     try {
-      await api.post('/api/contact', {
+      await api.post('/contact', {
         name: nameRef.current?.value,
         email: emailRef.current?.value,
         message: messageRef.current?.value,
@@ -91,16 +95,24 @@ export default function Contact() {
   }
 
   return (
+    <section id="contact" className="relative px-6 md:px-12 py-24 overflow-hidden">
 
-    <section id="contact" className="px-6 md:px-12 py-24 bg-violet-950">
+      {/* Gradient blobs — need absolute positioning to work */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-600/20 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-6 text-center mb-16">
+      {/* Content wrapper — keeps max width centered above blobs */}
+      <div className="relative z-10 max-w-5xl mx-auto">
 
-        <SectionLabel text="Let's connect" />
         {/* Header */}
-        <h2 className="font-serif text-5xl  text-white">
+        <SectionLabel text="Let's connect" />
+        <h2 className="font-serif text-5xl text-white mb-4">
           Get in <em className="text-accent italic">touch.</em>
         </h2>
+        <p className="text-[#f7f3ee]/50 font-light text-lg max-w-xl leading-relaxed mb-16">
+          I'm actively looking for my next role — fintech, product companies,
+          or anything ambitious. Reach out through any of these.
+        </p>
 
         {/* Dark card */}
         <div className="bg-ink rounded-3xl p-10 md:p-14">
@@ -122,28 +134,77 @@ export default function Contact() {
                 <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center">
                   {s.icon}
                 </div>
-
-                <div>
+                <div className="min-w-0">
                   <div className="font-medium text-sm">{s.label}</div>
                   <div className="text-[#f7f3ee]/40 text-xs mt-0.5 truncate">
                     {s.description}
                   </div>
                 </div>
-
-                <span className="ml-auto text-[#f7f3ee]/20 text-lg">↗</span>
+                <span className="ml-auto flex-shrink-0 text-[#f7f3ee]/20 text-lg">↗</span>
               </a>
             ))}
           </div>
 
           {/* Divider */}
           <div className="border-t border-white/10 my-10" />
+
+          {/* Contact form */}
+          {/* <p className="text-[#f7f3ee]/50 text-sm font-medium tracking-widest uppercase mb-6">
+            Or send a message
+          </p>
+
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-2">
+                <label className="text-[#f7f3ee]/40 text-xs uppercase tracking-widest font-medium">
+                  Name
+                </label>
+                <input
+                  ref={nameRef}
+                  type="text"
+                  required
+                  placeholder="Your name"
+                  className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-[#f7f3ee] placeholder:text-[#f7f3ee]/20 focus:outline-none focus:border-white/30 transition-colors"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-[#f7f3ee]/40 text-xs uppercase tracking-widest font-medium">
+                  Email
+                </label>
+                <input
+                  ref={emailRef}
+                  type="email"
+                  required
+                  placeholder="your@email.com"
+                  className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-[#f7f3ee] placeholder:text-[#f7f3ee]/20 focus:outline-none focus:border-white/30 transition-colors"
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="text-[#f7f3ee]/40 text-xs uppercase tracking-widest font-medium">
+                Message
+              </label>
+              <textarea
+                ref={messageRef}
+                required
+                rows={4}
+                placeholder="Hi, I'd like to talk about an opportunity..."
+                className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-[#f7f3ee] placeholder:text-[#f7f3ee]/20 focus:outline-none focus:border-white/30 transition-colors resize-none"
+              />
+            </div>
+
+            <button
+              ref={btnRef}
+              type="submit"
+              className="self-start bg-accent text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-[#d08888] hover:-translate-y-0.5 transition-all duration-200 mt-2"
+            >
+              Send message →
+            </button>
+          </form> */}
+
         </div>
-
       </div>
-
-
-
-    </section>
-
+    </section >
   )
 }

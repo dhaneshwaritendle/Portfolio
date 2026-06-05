@@ -16,10 +16,10 @@ export default function Experience() {
 
   return (
 
-    <section id="about" className="px-6 md:px-12 py-24  mx-auto bg-gray-900">
+    <section id="about" className="px-6 md:px-12 py-24  mx-auto bg-gray-950">
 
       <div className="max-w-6xl mx-auto px-6 text-center mb-16">
-        <SectionLabel text="Where have I worked?" />
+        <SectionLabel text="Where I have worked?" />
         <h2 className="text-4xl font-bold text-white">Industry experience.</h2>
       </div>
 

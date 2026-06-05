@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-950 pt-20"
+      className="relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-gray-950 pt-20"
     >
       {/* Gradient blobs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/20 rounded-full blur-3xl" />
